@@ -54,7 +54,7 @@ class SinglyLinkedList {
         // Copy the address of newNode to last node next pointer
         // Let the last node pointer pointing to newNode
         this.tail.next = newNode;
-        // Copy the address of newNode tail pointer
+        // Copy the address of newNode to the tail pointer
         // Let the tail pointer pointing to newNode
         this.tail = newNode;
         // Increment the size
@@ -63,27 +63,43 @@ class SinglyLinkedList {
     }
 
     removeLast() {
+        // If linked list is empty
+        // We would not remove any node
         if (this.isEmpty()) {
             return null;
 
         }
+        // We would store the data in the last node to the removedData
         var removedData = this.tail.data;
+        // If there is only one node in the linked list
         if (this.head.next === null) {
+            // Let the head pointer pointing to null
             this.head = null;
+            // Let the tail pointer pointing to null
             this.tail = null;
+            // Decrement the size
             this.currentSize--;
             return removedData;
 
         }
+        // If there are more than one node in the linked list
+        // Copy the head pointer and store the address to tmpPointer
         var tmpPointer = this.head;
+        // Create a prevPointer pointing to null
         var prevPointer = null;
+        // Move the tmpPointer to the second last node and run the code
         while (tmpPointer.next != null) {
             prevPointer = tmpPointer;
             tmpPointer = tmpPointer.next;
 
         }
+        // The tmpPointer is pointing to the last node and the prevPointer is pointing to the second last node
+        // Copy the address of prevPointer to tail pointer
+        // Let the tail pointer pointing to the second last node
         this.tail = prevPointer;
+        // Let the next pointer pointing to null
         this.tail.next = null;
+        // Decrement the size
         this.currentSize--;
         return removedData;
 
