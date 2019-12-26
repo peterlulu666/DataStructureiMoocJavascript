@@ -306,7 +306,7 @@ linkedList.addFirst(500);
 linkedList.addFirst(600);
 console.log(linkedList.removeNode("Hi"));
 linkedList.set(0, 100);
-linkedList.show();                                    
+linkedList.show();
 
 
 

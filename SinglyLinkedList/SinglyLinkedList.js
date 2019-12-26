@@ -170,6 +170,43 @@ class SinglyLinkedList {
 
     }
 
+    get(index) {
+        // If linked list is empty
+        // We would not get any data
+        if (this.head === null) {
+            return null;
+
+        }
+        // If linked list is not empty
+        // Check if the index is valid
+        if (index < 0 || index > this.currentSize - 1) {
+            throw "The index should be between 0 and linked list size. ";
+
+        }
+
+        // Copy head pointer to tmpPointer
+        var tmpPointer = this.head;
+        // Move the tmpPointer to index - 1 and run the code
+        for (let moveToIndex = 0; moveToIndex <= index - 1; moveToIndex++) {
+            tmpPointer = tmpPointer.next;
+
+        }
+        return tmpPointer.data;
+
+        // // Copy the head pointer to tmpPointer
+        // var tmpPointer = this.head;
+        // // Create the counter
+        // var countMove = 0;
+        // // Move the tmpPointer to index - 1 and run the code
+        // while (countMove !== index) {
+        //     tmpPointer = tmpPointer.next;
+        //     countMove++;
+        //
+        // }
+        // return tmpPointer.data;
+
+    }
+
     show() {
         var listStr = "";
         var tmpPointer = this.head;
@@ -194,7 +231,18 @@ singlyLinkedList.addFirst(500);
 singlyLinkedList.addFirst(600);
 console.log(singlyLinkedList.removeFirst());
 console.log(singlyLinkedList.removeFirst());
+singlyLinkedList.addFirst(500);
+singlyLinkedList.addFirst(600);
+console.log(singlyLinkedList.get(0));
 singlyLinkedList.show();
+
+
+
+
+
+
+
+
 
 
 
