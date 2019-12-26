@@ -151,15 +151,17 @@ class SinglyLinkedList {
             // Let head pointer pointing to null
             // Let tail pointer pointing to null
             this.head = this.tail = null;
+            // Decrement size
+            this.currentSize--;
             return removedData;
 
         }
         // If there are more than one node in linked list
         // Copy the head pointer to tmpPointer
         var tmpPointer = this.head;
-        // Move the tmpPointer
+        // Move the tmpPointer to the second node
         tmpPointer = tmpPointer.next;
-        // Move the head pointer
+        // Move the head pointer to the second node
         // Copy address of tmpPointer to head pointer
         this.head = tmpPointer;
         // Decrement the size
@@ -190,7 +192,15 @@ console.log(singlyLinkedList.removeLast());
 console.log(singlyLinkedList.removeLast());
 singlyLinkedList.addFirst(500);
 singlyLinkedList.addFirst(600);
+console.log(singlyLinkedList.removeFirst());
+console.log(singlyLinkedList.removeFirst());
 singlyLinkedList.show();
+
+
+
+
+
+
 
 
 
