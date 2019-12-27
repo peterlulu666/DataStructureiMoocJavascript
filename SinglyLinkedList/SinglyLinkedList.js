@@ -190,7 +190,7 @@ class SinglyLinkedList {
             tmpPointer = tmpPointer.next;
 
         }
-        return tmpPointer.data;
+        // return tmpPointer.data;
 
         // // Copy the head pointer to tmpPointer
         // var tmpPointer = this.head;
@@ -209,7 +209,6 @@ class SinglyLinkedList {
     }
 
     set(index, data) {
-
         // If linked list is empty
         if (this.head === null) {
             return null;
@@ -235,6 +234,65 @@ class SinglyLinkedList {
         // if (nodeInIndex !== null){
         //     nodeInIndex.data = data;
         // }
+
+    }
+
+    insert(index, data) {
+        // Check if the index is valid
+        if (index < 0 || index > this.currentSize) {
+            throw "The index should be between 0 and linked list size. ";
+
+        }
+        // Create a new node
+        var newNode = new Node(data);
+        // If linked list is empty
+        if (this.isEmpty() && index === 0) {
+            // Let head pointer pointing to newNode
+            // Let tail pointer pointing to newNode
+            this.head = this.tail = newNode;
+            // Increment size
+            this.currentSize++;
+            return;
+
+        }
+        // If linked list is not empty
+        if (index === 0) {
+            this.addFirst(data);
+            return;
+
+        }
+        if (index === this.currentSize){
+            this.addLast(data);
+            return;
+
+        }
+        // Traverse to the index - 1
+        var prevPointer = this.get(index - 1);
+        // Let the newNode next pointer pointing to node in index
+        newNode.next = prevPointer.next;
+        // Let node pointer in index - 1 pointing to newNode
+        prevPointer.next = newNode;
+        this.currentSize++;
+
+    }
+
+    remove(index){
+        // If linked list is empty
+        // We would not remove any node
+        if (this.head === null){
+            return null;
+
+        }
+        // Check if the index is valid
+        if (index < 0 || index > this.currentSize - 1) {
+            throw "The index should be between 0 and linked list size. ";
+
+        }
+        if (index === 0){
+            return this.removeFirst();
+
+        }
+
 
     }
 
@@ -267,7 +325,25 @@ singlyLinkedList.addFirst(600);
 console.log(singlyLinkedList.get(0));
 singlyLinkedList.set(0, 900);
 singlyLinkedList.set(1, 800);
+singlyLinkedList.insert(2, 600);
+// console.log(singlyLinkedList.removeFirst());
+// console.log(singlyLinkedList.removeFirst());
+// console.log(singlyLinkedList.removeFirst());
+singlyLinkedList.insert(3, 500);
+singlyLinkedList.addLast(700);
 singlyLinkedList.show();
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
