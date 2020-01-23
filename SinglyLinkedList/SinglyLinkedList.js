@@ -261,7 +261,7 @@ class SinglyLinkedList {
             return;
 
         }
-        if (index === this.currentSize){
+        if (index === this.currentSize) {
             this.addLast(data);
             return;
 
@@ -276,20 +276,63 @@ class SinglyLinkedList {
 
     }
 
-    remove(index){
+    remove(index) {
         // If linked list is empty
         // We would not remove any node
-        if (this.head === null){
+        if (this.head === null) {
             return null;
 
         }
+        // If linked list is not empty
         // Check if the index is valid
         if (index < 0 || index > this.currentSize - 1) {
             throw "The index should be between 0 and linked list size. ";
 
         }
-        if (index === 0){
+        // Remove data at index 0
+        if (index === 0) {
             return this.removeFirst();
+
+        }
+        // Remove data at the last index
+        if (index === this.currentSize - 1) {
+            return this.removeLast();
+
+        }
+        // Remove data in the between
+        // Traverse to index - 1
+        var prevPointer = this.get(index - 1);
+        // Let the prevPointer.next pointing to prevPointer.next.next
+        prevPointer.next = prevPointer.next.next;
+        this.currentSize--;
+
+    }
+
+    reverse() {
+        // Copy the address of the head pointer and store the address to the tmpPointer
+        var tmpPointer = this.head;
+        // Copy the address of tail pointer to head pointer
+        // Let the head pointer pointing to the last node
+        this.head = this.tail;
+        // Copy the address of tmpPointer to tail pointer
+        // Let the tail pointer pointing to the first node
+        this.tail = tmpPointer;
+        // Create the nextNode
+        var nextNode;
+        // Create the prevNode
+        var prevNode = null;
+        // Let the first node pointing to null
+        // Let the second node pointing to the first node
+        for (var i = 0; i < this.currentSize; i++) {
+            // Store the address of second node to nextNode
+            nextNode = tmpPointer.next;
+            // Let the second node pointing to the prevNode
+            tmpPointer.next = prevNode;
+            // nextNode = prevNode;
+            // Let the prevNode pointing to the tmpPointer
+            prevNode = tmpPointer;
+            // Move the tmpPointer to the nextNode
+            tmpPointer = nextNode;
 
         }
 
@@ -332,6 +375,13 @@ singlyLinkedList.insert(2, 600);
 singlyLinkedList.insert(3, 500);
 singlyLinkedList.addLast(700);
 singlyLinkedList.show();
+singlyLinkedList.remove(3);
+singlyLinkedList.reverse();
+singlyLinkedList.show();
+
+
+
+
 
 
 
