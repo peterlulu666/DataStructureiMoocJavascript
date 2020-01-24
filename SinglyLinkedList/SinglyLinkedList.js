@@ -317,25 +317,23 @@ class SinglyLinkedList {
         // Copy the address of tmpPointer to tail pointer
         // Let the tail pointer pointing to the first node
         this.tail = tmpPointer;
-        // Create the nextNode
-        var nextNode;
+        // Create the nextPointer
+        var nextPointer;
         // Create the prevNode
-        var prevNode = null;
+        var prevPointer = null;
         // Let the first node pointing to null
         // Let the second node pointing to the first node
         for (var i = 0; i < this.currentSize; i++) {
-            // Store the address of second node to nextNode
-            nextNode = tmpPointer.next;
-            // Let the second node pointing to the prevNode
-            tmpPointer.next = prevNode;
-            // nextNode = prevNode;
-            // Let the prevNode pointing to the tmpPointer
-            prevNode = tmpPointer;
-            // Move the tmpPointer to the nextNode
-            tmpPointer = nextNode;
+            // Store the address of second node to nextPointer
+            nextPointer = tmpPointer.next;
+            // Let the second node pointing to the prevPointer
+            tmpPointer.next = prevPointer;
+            // Let the prevPointer pointing to the tmpPointer
+            prevPointer = tmpPointer;
+            // Move the tmpPointer to the nextPointer
+            tmpPointer = nextPointer;
 
         }
-
 
     }
 
