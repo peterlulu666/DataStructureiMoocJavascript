@@ -45,6 +45,37 @@ class DoublyLinkedList {
 
     }
 
+    removeLast() {
+        // If the doubly linked list is empty
+        if (this.head === null) {
+            return null;
+
+        }
+        // If the doubly linked list has one node
+        // Let the head pointing pointing to null
+        // Let the tail pointer pointing to null
+        if (this.currentSize === 1) {
+            this.head = null;
+            this.tail = null;
+            this.currentSize--;
+            return;
+
+        }
+        // If the doubly linked list has more than one node
+        // Copy the tail pointer and store the address to removedNode
+        var removedNode = this.tail;
+        // Move the tail to left
+        // Copy the address of removedNode.prev to tail
+        // Let the tail pointing to the left node
+        this.tail = removedNode.prev;
+        // Let the tail.next pointing to null
+        this.tail.next = null;
+        // Let the removedNode.prev pointing to null
+        removedNode.prev = null;
+        this.currentSize--;
+
+    }
+
     show() {
         // Copy the head pointer and store the address to the tmpPointer
         var tmpPointer = this.head;
@@ -70,7 +101,15 @@ var doublyLinkedList = new DoublyLinkedList();
 doublyLinkedList.addLast(100);
 doublyLinkedList.addLast(200);
 doublyLinkedList.addLast(300);
+doublyLinkedList.removeLast();
+doublyLinkedList.removeLast();
 doublyLinkedList.show();
+
+
+
+
+
+
 
 
 
