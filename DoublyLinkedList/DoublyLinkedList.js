@@ -55,14 +55,18 @@ class DoublyLinkedList {
         // Let the head pointing pointing to null
         // Let the tail pointer pointing to null
         if (this.currentSize === 1) {
+            // Copy the tail pointer
+            // Store the address to removedNode
+            var removedNode = this.tail;
             this.head = null;
             this.tail = null;
             this.currentSize--;
-            return;
+            return removedNode.data;
 
         }
         // If the doubly linked list has more than one node
-        // Copy the tail pointer and store the address to removedNode
+        // Copy the tail pointer
+        // Store the address to removedNode
         var removedNode = this.tail;
         // Move the tail to left
         // Copy the address of removedNode.prev to tail
@@ -73,6 +77,44 @@ class DoublyLinkedList {
         // Let the removedNode.prev pointing to null
         removedNode.prev = null;
         this.currentSize--;
+        return removedNode.data;
+
+    }
+
+    removeFirst() {
+        // If the doubly linked list is empty
+        if (this.currentSize === 0) {
+            return null;
+
+        }
+        // If the doubly linked list has one node
+        if (this.currentSize === 1) {
+            // Copy the address of head pointer
+            // Store the address of head pointer to removedNode
+            var removedNode = this.head;
+            // Let the head pointer pointing to null
+            this.head = null;
+            // Let the tail pointer pointing to null
+            this.tail = null;
+            // Decrement the size
+            this.currentSize--;
+            return removedNode.data;
+
+        }
+        // If the doubly linked list has more than one node
+        // Copy the address of head pointer
+        // Store the address of head pointer to removedNode
+        var removedNode = this.head;
+        // Move the head pointer
+        // Let the head pointer pointing to the second node
+        this.head = this.head.next;
+        // Let the head.prev pointing to null
+        this.head.prev = null;
+        // Let removedNode.next pointing to null
+        removedNode.next = null;
+        // Decrement the size
+        this.currentSize--;
+        return removedNode.data;
 
     }
 
@@ -101,8 +143,18 @@ var doublyLinkedList = new DoublyLinkedList();
 doublyLinkedList.addLast(100);
 doublyLinkedList.addLast(200);
 doublyLinkedList.addLast(300);
-doublyLinkedList.removeLast();
-doublyLinkedList.removeLast();
+doublyLinkedList.show();
+console.log(doublyLinkedList.removeLast());
+doublyLinkedList.show();
+console.log(doublyLinkedList.removeLast());
+doublyLinkedList.show();
+doublyLinkedList.addLast(500);
+doublyLinkedList.addLast(600);
+doublyLinkedList.addLast(800);
+doublyLinkedList.show();
+console.log(doublyLinkedList.removeFirst());
+doublyLinkedList.show();
+console.log(doublyLinkedList.removeFirst());
 doublyLinkedList.show();
 
 
