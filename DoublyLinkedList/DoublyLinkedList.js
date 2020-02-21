@@ -141,7 +141,76 @@ class DoublyLinkedList {
         this.head.prev = newNode;
         // Move the head pointer
         this.head = newNode;
+        // this.head = this.head.prev;
         this.currentSize++;
+
+    }
+
+    getOneWay(index) {
+        // If the index < 0 or index >= currentSize
+        if (index < 0 || index >= this.currentSize) {
+            console.log("Index out of range");
+            return null;
+
+        }
+
+        // If the doubly linked list is empty
+        if (this.currentSize === 0) {
+            return null;
+
+        }
+
+        // Copy the head pointer
+        var tmpPointer = this.head;
+        for (let i = 0; i < index; i++) {
+            tmpPointer = tmpPointer.next;
+
+        }
+
+        return tmpPointer.data;
+
+    }
+
+    get(index) {
+        // If index is out of range
+        if (index < 0 || index >= this.currentSize) {
+            console.log("Index out of range");
+            return null;
+
+        }
+
+        // If the doubly linked list is empty
+        if (this.currentSize === 0) {
+            return null;
+
+        }
+
+        // If the doubly linked list is not empty
+        // Left side
+        if (index <= this.currentSize / 2) {
+            // Copy the head pointer and store the address to tmpPointer
+            var tmpPointer = this.head;
+            // Move the tmpPointer
+            for (let i = 0; i < index; i++) {
+                tmpPointer = tmpPointer.next;
+
+            }
+            return tmpPointer.data;
+
+        }
+        // Right side
+        else {
+            // Copy the tail pointer and store the address to tmpPointer
+            var tmpPointer = this.tail;
+            // Move the tmpPointer
+            for (let i = 0; i < this.currentSize - 1 - index; i++) {
+                tmpPointer = tmpPointer.prev;
+
+            }
+            return tmpPointer.data;
+
+        }
+
 
     }
 
@@ -185,6 +254,16 @@ console.log(doublyLinkedList.removeFirst());
 doublyLinkedList.show();
 doublyLinkedList.addFirst(500);
 doublyLinkedList.show();
+console.log(doublyLinkedList.getOneWay(0));
+console.log(doublyLinkedList.getOneWay(1));
+console.log(doublyLinkedList.getOneWay(2));
+console.log(doublyLinkedList.getOneWay(3));
+console.log(doublyLinkedList.get(0));
+console.log(doublyLinkedList.get(1));
+console.log(doublyLinkedList.get(2));
+console.log(doublyLinkedList.get(3));
+
+
 
 
 
