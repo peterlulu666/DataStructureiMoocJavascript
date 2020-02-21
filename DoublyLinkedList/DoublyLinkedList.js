@@ -118,6 +118,33 @@ class DoublyLinkedList {
 
     }
 
+    addFirst(data) {
+        // Create a new node
+        var newNode = new Node(data);
+        // If the doubly linked list is empty
+        if (this.currentSize === 0) {
+            // Let head pointer point to newNode
+            this.head = newNode;
+            // Let tail pointer point to newNode
+            this.tail = newNode;
+            // Increment size
+            this.currentSize++;
+            return;
+
+        }
+
+        // If the doubly linked list has more than one node
+        // Copy the head pointer and store the value to the tmpPointer
+        // Let the newNode.next point to the first node
+        newNode.next = this.head;
+        // Let the first node previous pointer point to the newNode
+        this.head.prev = newNode;
+        // Move the head pointer
+        this.head = newNode;
+        this.currentSize++;
+
+    }
+
     show() {
         // Copy the head pointer and store the address to the tmpPointer
         var tmpPointer = this.head;
@@ -156,6 +183,10 @@ console.log(doublyLinkedList.removeFirst());
 doublyLinkedList.show();
 console.log(doublyLinkedList.removeFirst());
 doublyLinkedList.show();
+doublyLinkedList.addFirst(500);
+doublyLinkedList.show();
+
+
 
 
 
