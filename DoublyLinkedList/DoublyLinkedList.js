@@ -167,7 +167,7 @@ class DoublyLinkedList {
 
     }
 
-    get(index) {
+    getForLoop(index) {
         // If the index < 0 or index >= currentSize
         if (index < 0 || index >= this.currentSize) {
             console.log("Index out of range");
@@ -185,6 +185,7 @@ class DoublyLinkedList {
                 tmpPointer = tmpPointer.next;
 
             }
+            console.log("Working from left. ");
             return tmpPointer.data;
 
         }
@@ -197,9 +198,68 @@ class DoublyLinkedList {
                 tmpPointer = tmpPointer.prev;
 
             }
+            console.log("Working from right. ");
             return tmpPointer.data;
 
         }
+
+    }
+
+    getWhileLoop(index) {
+        // If index < 0 or index >= currentSize
+        if (index < 0 || index >= this.currentSize) {
+            console.log("Index out of range");
+            return null;
+
+        }
+
+        // If the doubly linked list is not empty
+        // Left side
+        if (index < this.currentSize / 2) {
+            // Copy the head pointer and store the address to the tmpPointer
+            var tmpPointer = this.head;
+            // Count the move
+            var count = 0;
+            // Move the tmpPointer
+            while (true) {
+                if (count === index) {
+                    break;
+
+                }
+
+                tmpPointer = tmpPointer.next;
+                // Increment count
+                count++;
+
+            }
+            console.log("Working from left. ")
+            return tmpPointer.data;
+
+        }
+
+        // Right side
+        else {
+            // Copy the tail pointer and store the address to tmpPointer
+            var tmpPointer = this.tail;
+            // Count the move
+            var count = 0;
+            // Move the tmpPointer
+            while (true) {
+                if (count === this.currentSize - 1 - index) {
+                    break;
+
+                }
+
+                tmpPointer = tmpPointer.prev;
+                // Increment the count
+                count++;
+
+            }
+            console.log("Working from right. ")
+            return tmpPointer.data;
+
+        }
+
 
     }
 
@@ -247,10 +307,14 @@ console.log(doublyLinkedList.getOneWay(0));
 console.log(doublyLinkedList.getOneWay(1));
 console.log(doublyLinkedList.getOneWay(2));
 console.log(doublyLinkedList.getOneWay(3));
-console.log(doublyLinkedList.get(0));
-console.log(doublyLinkedList.get(1));
-console.log(doublyLinkedList.get(2));
-console.log(doublyLinkedList.get(3));
+console.log(doublyLinkedList.getForLoop(0));
+console.log(doublyLinkedList.getForLoop(1));
+console.log(doublyLinkedList.getForLoop(2));
+console.log(doublyLinkedList.getForLoop(3));
+console.log(doublyLinkedList.getWhileLoop(0));
+console.log(doublyLinkedList.getWhileLoop(1));
+console.log(doublyLinkedList.getWhileLoop(2));
+console.log(doublyLinkedList.getWhileLoop(3));
 
 
 
