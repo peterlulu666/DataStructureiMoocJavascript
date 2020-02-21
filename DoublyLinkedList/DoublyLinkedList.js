@@ -154,14 +154,10 @@ class DoublyLinkedList {
 
         }
 
-        // If the doubly linked list is empty
-        if (this.currentSize === 0) {
-            return null;
-
-        }
-
+        // If the doubly linked list is not empty
         // Copy the head pointer
         var tmpPointer = this.head;
+        // Move the tmpPointer
         for (let i = 0; i < index; i++) {
             tmpPointer = tmpPointer.next;
 
@@ -172,15 +168,9 @@ class DoublyLinkedList {
     }
 
     get(index) {
-        // If index is out of range
+        // If the index < 0 or index >= currentSize
         if (index < 0 || index >= this.currentSize) {
             console.log("Index out of range");
-            return null;
-
-        }
-
-        // If the doubly linked list is empty
-        if (this.currentSize === 0) {
             return null;
 
         }
@@ -210,7 +200,6 @@ class DoublyLinkedList {
             return tmpPointer.data;
 
         }
-
 
     }
 
