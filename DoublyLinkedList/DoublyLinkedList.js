@@ -232,8 +232,9 @@ class DoublyLinkedList {
                 count++;
 
             }
-            console.log("Working from left. ")
-            return tmpPointer.data;
+            // console.log("Working from left. ");
+            // console.log(tmpPointer.data);
+            return tmpPointer;
 
         }
 
@@ -255,11 +256,23 @@ class DoublyLinkedList {
                 count++;
 
             }
-            console.log("Working from right. ")
-            return tmpPointer.data;
+            // console.log("Working from right. ");
+            // console.log(tmpPointer.data);
+            return tmpPointer;
 
         }
 
+    }
+
+    set(index, data) {
+        // Find the node
+        var foundNode = this.getWhileLoop(index);
+        if (foundNode != null) {
+            foundNode.data = data;
+            return true;
+
+        }
+        return false;
 
     }
 
@@ -311,10 +324,14 @@ console.log(doublyLinkedList.getForLoop(0));
 console.log(doublyLinkedList.getForLoop(1));
 console.log(doublyLinkedList.getForLoop(2));
 console.log(doublyLinkedList.getForLoop(3));
-console.log(doublyLinkedList.getWhileLoop(0));
-console.log(doublyLinkedList.getWhileLoop(1));
-console.log(doublyLinkedList.getWhileLoop(2));
-console.log(doublyLinkedList.getWhileLoop(3));
+doublyLinkedList.getWhileLoop(0);
+doublyLinkedList.getWhileLoop(1);
+doublyLinkedList.getWhileLoop(2);
+doublyLinkedList.getWhileLoop(3);
+console.log(doublyLinkedList.set(0,300));
+doublyLinkedList.show();
+
+
 
 
 
