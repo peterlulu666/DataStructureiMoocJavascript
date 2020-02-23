@@ -451,29 +451,8 @@ doublyLinkedList.getWhileLoop(2);
 doublyLinkedList.getWhileLoop(3);
 console.log(doublyLinkedList.set(0, 300));
 doublyLinkedList.show();
-doublyLinkedList.insert(2, 500);        
+doublyLinkedList.insert(2, 500);
 doublyLinkedList.show();
 doublyLinkedList.remove(2);
 doublyLinkedList.show();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
