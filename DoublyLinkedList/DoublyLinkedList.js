@@ -276,6 +276,74 @@ class DoublyLinkedList {
 
     }
 
+    insert(index, data) {
+        // If index < 0 or index >= currentSize
+        if (index < 0 || index > this.currentSize) {
+            console.log("Index out of range");
+            return null;
+
+        }
+
+        // Insert at the first node
+        if (index === 0) {
+            this.addFirst(data);
+            return;
+
+        }
+
+        // Insert after the last node
+        if (index === this.currentSize) {
+            this.addLast(data);
+            return;
+
+        }
+
+        // Insert in the middle
+        // Create a new node
+        var newNode = new Node(data);
+        // Create prevNode
+        var prevNode = null;
+        // Left side
+        if (index <= this.currentSize / 2) {
+            // Copy the head pointer and store the address to tmpPointer
+            var tmpPointer = this.head;
+            // Move the tmpPointer to index - 1
+            for (let i = 0; i < index - 1; i++) {
+                tmpPointer = tmpPointer.next;
+
+            }
+            prevNode = tmpPointer;
+            console.log("Working from left side. ");
+
+        }
+        // Right side
+        else {
+            // Copy the tail pointer and store the address to tmpPointer
+            var tmpPointer = this.tail;
+            // Move the tmpPointer to index - 1
+            for (let i = 0; i < this.currentSize - 1 - index + 1; i++) {
+                tmpPointer = tmpPointer.prev;
+
+            }
+            prevNode = tmpPointer;
+            console.log("Working from right side. ");
+
+        }
+        // Create currentNode
+        var currentNode = prevNode.next;
+        // let the newNode.next point to the currentNode
+        newNode.next = currentNode;
+        // Let the newNode.prev point to the prevNode
+        newNode.prev = prevNode;
+        // Let prevNode.next point to newNode
+        prevNode.next = newNode;
+        // Let currentNode.prev point to newNode
+        currentNode.prev = newNode;
+        // Increment currentSize
+        this.currentSize++;
+
+    }
+
     show() {
         // Copy the head pointer and store the address to the tmpPointer
         var tmpPointer = this.head;
@@ -328,8 +396,12 @@ doublyLinkedList.getWhileLoop(0);
 doublyLinkedList.getWhileLoop(1);
 doublyLinkedList.getWhileLoop(2);
 doublyLinkedList.getWhileLoop(3);
-console.log(doublyLinkedList.set(0,300));
+console.log(doublyLinkedList.set(0, 300));
 doublyLinkedList.show();
+doublyLinkedList.insert(2, 500);
+doublyLinkedList.show();
+
+
 
 
 
