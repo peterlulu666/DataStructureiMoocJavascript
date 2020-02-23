@@ -346,6 +346,57 @@ class DoublyLinkedList {
 
     }
 
+    remove(index) {
+        // If index < 0 or index >= currentSize
+        if (index < 0 || index >= this.currentSize) {
+            console.log("Index out of range");
+            return null;
+
+        }
+
+        // If the doubly liked list is empty
+        if (this.currentSize === 0) {
+            return null;
+
+        }
+
+        // Remove node at index 0
+        if (index === 0) {
+            // Call removeFirst
+            this.removeFirst();
+            return;
+
+        }
+
+        // Remove node at the last index
+        if (index === this.currentSize - 1) {
+            // Call removeLast
+            this.removeLast();
+            return;
+
+        }
+
+        // Remove node in the middle of doubly liked list
+        // Get index - 1
+        // Create prevNode
+        var prevNode = this.getWhileLoop(index - 1);
+        // Create nextNode
+        var nextNode = prevNode.next.next;
+        // Create currentNode
+        var currentNode = prevNode.next;
+        // Let prevNode.next point to nextNode
+        prevNode.next = nextNode;
+        // Let nextNode.prev point to prevNode
+        nextNode.prev = prevNode;
+        // Let currentNode.prev point to null
+        currentNode.prev = null;
+        // Let currentNode.next point to null
+        currentNode.next = null;
+        // Decrement currentSize
+        this.currentSize--;
+
+    }
+
     show() {
         // Copy the head pointer and store the address to the tmpPointer
         var tmpPointer = this.head;
@@ -402,6 +453,10 @@ console.log(doublyLinkedList.set(0, 300));
 doublyLinkedList.show();
 doublyLinkedList.insert(2, 500);
 doublyLinkedList.show();
+doublyLinkedList.remove(2);
+doublyLinkedList.show();
+
+
 
 
 
