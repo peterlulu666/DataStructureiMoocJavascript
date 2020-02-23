@@ -303,32 +303,34 @@ class DoublyLinkedList {
         var newNode = new Node(data);
         // Create prevNode
         var prevNode = null;
-        // Left side
-        if (index <= this.currentSize / 2) {
-            // Copy the head pointer and store the address to tmpPointer
-            var tmpPointer = this.head;
-            // Move the tmpPointer to index - 1
-            for (let i = 0; i < index - 1; i++) {
-                tmpPointer = tmpPointer.next;
-
-            }
-            prevNode = tmpPointer;
-            console.log("Working from left side. ");
-
-        }
-        // Right side
-        else {
-            // Copy the tail pointer and store the address to tmpPointer
-            var tmpPointer = this.tail;
-            // Move the tmpPointer to index - 1
-            for (let i = 0; i < this.currentSize - 1 - index + 1; i++) {
-                tmpPointer = tmpPointer.prev;
-
-            }
-            prevNode = tmpPointer;
-            console.log("Working from right side. ");
-
-        }
+        // Call getWhileLoop
+        prevNode = this.getWhileLoop(index - 1);
+        // // Left side
+        // if (index <= this.currentSize / 2) {
+        //     // Copy the head pointer and store the address to tmpPointer
+        //     var tmpPointer = this.head;
+        //     // Move the tmpPointer to index - 1
+        //     for (let i = 0; i < index - 1; i++) {
+        //         tmpPointer = tmpPointer.next;
+        //
+        //     }
+        //     prevNode = tmpPointer;
+        //     console.log("Working from left side. ");
+        //
+        // }
+        // // Right side
+        // else {
+        //     // Copy the tail pointer and store the address to tmpPointer
+        //     var tmpPointer = this.tail;
+        //     // Move the tmpPointer to index - 1
+        //     for (let i = 0; i < this.currentSize - 1 - index + 1; i++) {
+        //         tmpPointer = tmpPointer.prev;
+        //
+        //     }
+        //     prevNode = tmpPointer;
+        //     console.log("Working from right side. ");
+        //
+        // }
         // Create currentNode
         var currentNode = prevNode.next;
         // let the newNode.next point to the currentNode
