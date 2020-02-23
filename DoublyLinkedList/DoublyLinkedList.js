@@ -382,16 +382,16 @@ class DoublyLinkedList {
         var prevNode = this.getWhileLoop(index - 1);
         // Create nextNode
         var nextNode = prevNode.next.next;
-        // Create currentNode
-        var currentNode = prevNode.next;
+        // Create removeNode
+        var removeNode = prevNode.next;
         // Let prevNode.next point to nextNode
         prevNode.next = nextNode;
         // Let nextNode.prev point to prevNode
         nextNode.prev = prevNode;
-        // Let currentNode.prev point to null
-        currentNode.prev = null;
-        // Let currentNode.next point to null
-        currentNode.next = null;
+        // Let removeNode.prev point to null
+        removeNode.prev = null;
+        // Let removeNode.next point to null
+        removeNode.next = null;
         // Decrement currentSize
         this.currentSize--;
 
@@ -451,7 +451,7 @@ doublyLinkedList.getWhileLoop(2);
 doublyLinkedList.getWhileLoop(3);
 console.log(doublyLinkedList.set(0, 300));
 doublyLinkedList.show();
-doublyLinkedList.insert(2, 500);
+doublyLinkedList.insert(2, 500);        
 doublyLinkedList.show();
 doublyLinkedList.remove(2);
 doublyLinkedList.show();
