@@ -72,7 +72,7 @@ var linkedListStack = new LinkedListStack();
 linkedListStack.push(500);
 linkedListStack.push(600);
 linkedListStack.show();
-linkedListStack.pop();
+console.log(linkedListStack.pop());
 linkedListStack.show();
 console.log(linkedListStack.peak());
 console.log(linkedListStack.getSize());
