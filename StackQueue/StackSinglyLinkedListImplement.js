@@ -58,6 +58,7 @@ class StackSinglyLinkedListImplement {
             this.tail = null;
             // Decrement the currentSize
             this.currentSize--;
+            // Return removed data
             return tmpPointer.data;
 
         }
@@ -71,6 +72,7 @@ class StackSinglyLinkedListImplement {
         tmpPointer.next = null;
         // Decrement the currentSize
         this.currentSize--;
+        // Return removed data
         return tmpPointer.data;
 
     }
