@@ -49,32 +49,51 @@ class QueueSinglyLinkedListImplement {
 
         }
 
+        // If the queue is not empty
+        // Copy the head pointer and store the address to tmpPointer
+        var tmpPointer = this.head;
         // If the queue has one node
         if (this.currentSize === 1) {
-            // Copy the tail pointer and store the address to tmpPointer
-            var tmpPointer = this.head;
-            // Let the head pointer point to null
-            this.head = null;
-            // Let the tail pointer point to null
+            // Let the tail pinter point to null
             this.tail = null;
-            // Decrement the currentSize
-            this.currentSize--;
-            // Return the removed data
-            return tmpPointer.data;
 
         }
 
-        // If the queue has more than one node
-        // Copy the head pointer and store the address to tmpPointer
-        var tmpPointer = this.head;
         // Move the head pointer
         this.head = this.head.next;
-        // Let the tmpPointer point to null
+        // Let tmpPointer.next point to null
         tmpPointer.next = null;
         // Decrement the currentSize
         this.currentSize--;
-        // Return removed data
+        // Return the removed data
         return tmpPointer.data;
+
+        // // If the queue has one node
+        // if (this.currentSize === 1) {
+        //     // Copy the tail pointer and store the address to tmpPointer
+        //     var tmpPointer = this.head;
+        //     // Let the head pointer point to null
+        //     this.head = null;
+        //     // Let the tail pointer point to null
+        //     this.tail = null;
+        //     // Decrement the currentSize
+        //     this.currentSize--;
+        //     // Return the removed data
+        //     return tmpPointer.data;
+        //
+        // }
+        //
+        // // If the queue has more than one node
+        // // Copy the head pointer and store the address to tmpPointer
+        // var tmpPointer = this.head;
+        // // Move the head pointer
+        // this.head = this.head.next;
+        // // Let the tmpPointer point to null
+        // tmpPointer.next = null;
+        // // Decrement the currentSize
+        // this.currentSize--;
+        // // Return removed data
+        // return tmpPointer.data;
 
     }
 
