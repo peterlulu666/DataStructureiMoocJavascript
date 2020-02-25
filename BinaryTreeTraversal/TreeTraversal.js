@@ -21,8 +21,8 @@ class TreeTraversal {
 
     }
 
-    preOrderTraversal(node){
-        if (node === null){
+    preOrderTraversal(node) {
+        if (node === null) {
             return;
 
         }
@@ -33,8 +33,8 @@ class TreeTraversal {
 
     }
 
-    postOrderTraversal(node){
-        if (node === null){
+    postOrderTraversal(node) {
+        if (node === null) {
             return;
 
         }
@@ -42,6 +42,27 @@ class TreeTraversal {
         this.postOrderTraversal(node.left);
         this.postOrderTraversal(node.right);
         console.log(node.data);
+
+    }
+
+    Breadth_first_search(root) {
+        var queue = [];
+        var data = [];
+        queue.push(root);
+        while (queue.length !== 0) {
+            var node = queue.shift();
+            data.push(node.data);
+            if (node.left != null) {
+                queue.push(node.left);
+
+            }
+            if (node.right != null) {
+                queue.push(node.right);
+
+            }
+
+        }
+        return data.toString();
 
     }
 
@@ -61,9 +82,14 @@ root.left.right = treeTraversal.insert("navigate");
 root.right = treeTraversal.insert("code");
 root.right.left = treeTraversal.insert("refactor");
 root.right.right = treeTraversal.insert("run");
-treeTraversal.inOrderTraversal(root);
-treeTraversal.preOrderTraversal(root);
-treeTraversal.postOrderTraversal(root);
+// treeTraversal.inOrderTraversal(root);
+// treeTraversal.preOrderTraversal(root);
+// treeTraversal.postOrderTraversal(root);
+console.log(treeTraversal.Breadth_first_search(root));
+
+
+
+
 
 
 
